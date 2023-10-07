@@ -3,14 +3,14 @@
 /// # Usage
 /// You can ceil to `i32` and `i64` explicitly:
 /// ```rust
-/// use round_to_int::*;
+/// use round_to::*;
 ///
 /// assert_eq!(0.7.ceil_to_i32(), 1);
 /// assert_eq!(1.3.ceil_to_i64(), 2);
 /// ```
 /// or implicitly to `i8`, `i16`, `i32`, `i64`, `i128`, `isize`, `u8`, `u16`, `u32`, `u64`, `u128`, or `usize`:
 /// ```rust
-/// use round_to_int::*;
+/// use round_to::*;
 ///
 /// let a: i8 = 0.4.ceil_to();
 /// assert_eq!(a, 1);
@@ -21,14 +21,14 @@ pub trait CeilTo<T> {
     /// # Usage
     /// You can ceil to `i32` and `i64` explicitly:
     /// ```rust
-    /// use round_to_int::*;
+    /// use round_to::*;
     ///
     /// assert_eq!(0.7.ceil_to_i32(), 1);
     /// assert_eq!(1.3.ceil_to_i64(), 2);
     /// ```
     /// or implicitly to `i8`, `i16`, `i32`, `i64`, `i128`, `isize`, `u8`, `u16`, `u32`, `u64`, `u128`, or `usize`:
     /// ```rust
-    /// use round_to_int::*;
+    /// use round_to::*;
     ///
     /// let a: i8 = 0.4.ceil_to();
     /// assert_eq!(a, 1);
@@ -60,14 +60,14 @@ macro_rules! ceil_to_explicit {
         /// # Usage
         /// You can ceil to `i32` and `i64` explicitly:
         /// ```rust
-        /// use round_to_int::*;
+        /// use round_to::*;
         ///
         /// assert_eq!(0.7.ceil_to_i32(), 1);
         /// assert_eq!(1.3.ceil_to_i64(), 2);
         /// ```
         /// or implicitly to `i8`, `i16`, `i32`, `i64`, `i128`, `isize`, `u8`, `u16`, `u32`, `u64`, `u128`, or `usize`:
         /// ```rust
-        /// use round_to_int::*;
+        /// use round_to::*;
         ///
         /// let a: i8 = 0.4.ceil_to();
         /// assert_eq!(a, 1);
@@ -78,14 +78,14 @@ macro_rules! ceil_to_explicit {
             /// # Usage
             /// You can ceil to `i32` and `i64` explicitly:
             /// ```rust
-            /// use round_to_int::*;
+            /// use round_to::*;
             ///
             /// assert_eq!(0.7.ceil_to_i32(), 1);
             /// assert_eq!(1.3.ceil_to_i64(), 2);
             /// ```
             /// or implicitly to `i8`, `i16`, `i32`, `i64`, `i128`, `isize`, `u8`, `u16`, `u32`, `u64`, `u128`, or `usize`:
             /// ```rust
-            /// use round_to_int::*;
+            /// use round_to::*;
             ///
             /// let a: i8 = 0.4.ceil_to();
             /// assert_eq!(a, 1);

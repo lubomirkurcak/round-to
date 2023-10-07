@@ -1,9 +1,9 @@
 [package]
-name = "round_to_int"
-version = "0.1.3"
+name = "round-to"
+version = "0.1.0"
 edition = "2021"
 license = "MIT OR Apache-2.0"
 description = "Round floating point to integer."
-repository = "https://github.com/lubomirkurcak/round_to_int/"
-keywords = ["round", "int", "rounding", "integer", "round_to_int"]
+repository = "https://github.com/lubomirkurcak/round-to/"
+keywords = ["round", "rounding", "to", "integer", "round-to"]
 categories = ["encoding", "game-development", "hardware-support", "algorithms", "mathematics"]
