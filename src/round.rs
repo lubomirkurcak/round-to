@@ -6,7 +6,7 @@
 /// use round_to::*;
 ///
 /// assert_eq!(0.4.round_to_i32(), 0);
-/// assert_eq!(0.5.round_to_i64(), 1);
+/// assert_eq!(0.6.round_to_i64(), 1);
 /// ```
 /// or implicitly to `i8`, `i16`, `i32`, `i64`, `i128`, `isize`, `u8`, `u16`, `u32`, `u64`, `u128`, or `usize`:
 /// ```rust
@@ -24,7 +24,7 @@ pub trait RoundTo<T> {
     /// use round_to::*;
     ///
     /// assert_eq!(0.4.round_to_i32(), 0);
-    /// assert_eq!(0.5.round_to_i64(), 1);
+    /// assert_eq!(0.6.round_to_i64(), 1);
     /// ```
     /// or implicitly to `i8`, `i16`, `i32`, `i64`, `i128`, `isize`, `u8`, `u16`, `u32`, `u64`, `u128`, or `usize`:
     /// ```rust
@@ -40,12 +40,12 @@ macro_rules! round_to {
     ($($t:ty),*) => {
         $(impl RoundTo<$t> for f32 {
             fn round_to(self) -> $t {
-                self.round() as $t
+                self.round_ties_even() as $t
             }
         })*
         $(impl RoundTo<$t> for f64 {
             fn round_to(self) -> $t {
-                self.round() as $t
+                self.round_ties_even() as $t
             }
         })*
     };
@@ -63,7 +63,7 @@ macro_rules! round_to_explicit {
         /// use round_to::*;
         ///
         /// assert_eq!(0.4.round_to_i32(), 0);
-        /// assert_eq!(0.5.round_to_i64(), 1);
+        /// assert_eq!(0.6.round_to_i64(), 1);
         /// ```
         /// or implicitly to `i8`, `i16`, `i32`, `i64`, `i128`, `isize`, `u8`, `u16`, `u32`, `u64`, `u128`, or `usize`:
         /// ```rust
@@ -81,7 +81,7 @@ macro_rules! round_to_explicit {
             /// use round_to::*;
             ///
             /// assert_eq!(0.4.round_to_i32(), 0);
-            /// assert_eq!(0.5.round_to_i64(), 1);
+            /// assert_eq!(0.6.round_to_i64(), 1);
             /// ```
             /// or implicitly to `i8`, `i16`, `i32`, `i64`, `i128`, `isize`, `u8`, `u16`, `u32`, `u64`, `u128`, or `usize`:
             /// ```rust
@@ -122,7 +122,7 @@ mod tests {
     #[ignore]
     fn test_all() {
         test_all_f32s(|f| {
-            assert_eq!(f.round() as i32, f.round_to_i32());
+            assert_eq!(f.round_ties_even() as i32, f.round_to_i32());
         });
     }
 
@@ -142,33 +142,33 @@ mod tests {
     fn test() {
         let half = f32::from_bits(0x3f000000);
         let almost_half = f32::from_bits(0x3effffff);
+        let bit_more_than_half = f32::from_bits(0x3f000001);
         assert_eq!(half, 0.5);
-        assert_ne!(almost_half, 0.5);
+        assert!(almost_half < 0.5);
+        assert!(bit_more_than_half > 0.5);
 
-        assert_eq!(half.round_to_i32(), 1);
+        assert_eq!(half.round_to_i32(), 0);
         assert_eq!(almost_half.round_to_i32(), 0);
-        assert_eq!((-half).round_to_i32(), -1);
+        assert_eq!(bit_more_than_half.round_to_i32(), 1);
+        assert_eq!((-half).round_to_i32(), 0);
         assert_eq!((-almost_half).round_to_i32(), 0);
+        assert_eq!((-bit_more_than_half).round_to_i32(), -1);
     }
 
     #[test]
     fn test_64() {
         let half = f64::from_bits(0x3fe0000000000000);
         let almost_half = f64::from_bits(0x3fdfffffffffffff);
+        let bit_more_than_half = f64::from_bits(0x3fe0000000000001);
         assert_eq!(half, 0.5);
-        assert_ne!(almost_half, 0.5);
+        assert!(almost_half < 0.5);
+        assert!(bit_more_than_half > 0.5);
 
-        assert_eq!(half.round_to_i32(), 1);
+        assert_eq!(half.round_to_i32(), 0);
         assert_eq!(almost_half.round_to_i32(), 0);
-        assert_eq!((-half).round_to_i32(), -1);
+        assert_eq!(bit_more_than_half.round_to_i32(), 1);
+        assert_eq!((-half).round_to_i32(), 0);
         assert_eq!((-almost_half).round_to_i32(), 0);
-    }
-
-    #[test]
-    fn readme() {
-        assert_eq!(0.4.round_to_i32(), 0);
-        assert_eq!(0.5.round_to_i64(), 1);
-        let a: i8 = 0.4.round_to();
-        assert_eq!(a, 0);
+        assert_eq!((-bit_more_than_half).round_to_i32(), -1);
     }
 }

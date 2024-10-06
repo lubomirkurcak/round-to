@@ -163,12 +163,4 @@ mod tests {
         assert_eq!((-half).ceil_to_i32(), 0);
         assert_eq!((-almost_half).ceil_to_i32(), 0);
     }
-
-    #[test]
-    fn readme() {
-        assert_eq!(0.7.ceil_to_i32(), 1);
-        assert_eq!(1.3.ceil_to_i64(), 2);
-        let a: i8 = 0.4.ceil_to();
-        assert_eq!(a, 1);
-    }
 }

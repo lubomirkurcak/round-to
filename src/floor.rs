@@ -163,12 +163,4 @@ mod tests {
         assert_eq!((-half).floor_to_i32(), -1);
         assert_eq!((-almost_half).floor_to_i32(), -1);
     }
-
-    #[test]
-    fn readme() {
-        assert_eq!(0.7.floor_to_i32(), 0);
-        assert_eq!(1.3.floor_to_i64(), 1);
-        let a: i8 = 0.4.floor_to();
-        assert_eq!(a, 0);
-    }
 }
