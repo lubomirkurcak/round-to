@@ -29,3 +29,13 @@ assert_eq!(0.5.ceil_to_i32(), 1);
 Rounding is implemented using [`round_ties_even`](https://doc.rust-lang.org/std/primitive.f32.html#method.round_ties_even). Floor and ceil use [`floor`](https://doc.rust-lang.org/std/primitive.f32.html#method.floor), and [`ceil`](https://doc.rust-lang.org/std/primitive.f32.html#method.ceil).
 
 In the future, optimized implementations may be added.
+
+### License
+
+Dual-licensed to be compatible with the Rust project.
+
+Licensed under the Apache License, Version 2.0
+https://www.apache.org/licenses/LICENSE-2.0 or the MIT license
+https://opensource.org/licenses/MIT, at your
+option.
+
