@@ -27,7 +27,7 @@ assert_eq!(0.5.ceil_to_i32(), 1);
 
 ### Implementation
 
-Rounding is implemented using [`round_ties_even`](https://doc.rust-lang.org/std/primitive.f32.html#method.round_ties_even). Floor and ceil use [`floor`](https://doc.rust-lang.org/std/primitive.f32.html#method.floor), and [`ceil`](https://doc.rust-lang.org/std/primitive.f32.html#method.ceil). Values are then converted to target integer type using [`as`](https://doc.rust-lang.org/std/keyword.as.html).
+Rounding is implemented using [`round_ties_even`](https://doc.rust-lang.org/std/primitive.f32.html#method.round_ties_even). Floor and ceil use [`floor`](https://doc.rust-lang.org/std/primitive.f32.html#method.floor) and [`ceil`](https://doc.rust-lang.org/std/primitive.f32.html#method.ceil). Values are then converted to target integer type using [`as`](https://doc.rust-lang.org/std/keyword.as.html).
 
 ### License
 
